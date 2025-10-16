@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Boilerplate Overview
 
-## Getting Started
+This boilerplate is set up with powerful modern tools to help you start building full-stack web applications quickly and securely:
 
-First, run the development server:
+## 🔒 Clerk Authentication
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[Clerk](https://clerk.com/) provides complete authentication and user management out of the box. It handles sign up, sign in, user profile management, and more, allowing you to focus on building your core features.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🗄️ Neon Postgres (Remote)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Neon](https://neon.tech/) is a fully managed, serverless Postgres database you can connect to remotely. It combines the power and familiarity of PostgreSQL with easy scaling and modern DX.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Prisma ORM
 
-## Learn More
+[Prisma](https://www.prisma.io/) acts as your elegant database toolkit for TypeScript & Node.js. It provides type-safe database access, migration management, and an amazing development workflow.
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 shadcn/ui
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[shadcn/ui](https://ui.shadcn.com/) delivers beautifully designed, fully customizable React components built on top of Radix UI and TailwindCSS — helping you move faster when building interfaces.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Get Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Clone the repo, install dependencies, set up your `.env` file with your Clerk and Neon credentials, and you're ready to go!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you need help or more info about each tool, check out their official documentation linked above.
+
+---
+
+# Visão Geral do Boilerplate Next.js (PT-BR)
+
+Este boilerplate está configurado com ferramentas modernas poderosas para ajudar você a começar a construir aplicações web full-stack de forma rápida e segura:
+
+## 🔒 Autenticação Clerk
+
+[Clerk](https://clerk.com/) fornece autenticação completa e gerenciamento de usuários prontos para uso. Ele lida com cadastro, login, gerenciamento de perfil do usuário e muito mais, permitindo que você foque em construir suas principais funcionalidades.
+
+## 🗄️ Neon Postgres (Remoto)
+
+[Neon](https://neon.tech/) é um banco de dados Postgres totalmente gerenciado e serverless, que você pode conectar remotamente. Ele combina o poder e a familiaridade do PostgreSQL com fácil escalabilidade e uma experiência de desenvolvedor moderna.
+
+## 🛠️ Prisma ORM
+
+[Prisma](https://www.prisma.io/) atua como uma elegante ferramenta de banco de dados para TypeScript & Node.js. Ele oferece acesso ao banco de dados com segurança de tipos, gerenciamento de migrações e um fluxo de desenvolvimento incrível.
+
+## 🎨 shadcn/ui
+
+[shadcn/ui](https://ui.shadcn.com/) oferece componentes React lindamente projetados e totalmente personalizáveis, construídos sobre Radix UI e TailwindCSS — ajudando você a construir interfaces rapidamente.
+
+---
+
+## Como Começar
+
+Clone o repositório, instale as dependências, configure o arquivo `.env.example` com as credenciais do Clerk e da Neon, e pronto!
+
+Se precisar de ajuda ou mais informações sobre cada ferramenta, confira a documentação oficial nos links acima.
