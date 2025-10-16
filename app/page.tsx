@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignOutButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
               <span className="text-lg font-medium">Você já está autenticado!</span>
               <div className="flex items-center gap-3">
                 <UserButton />
+                <ThemeToggle />
                 <SignOutButton>
                   <Button>Sair</Button>
                 </SignOutButton>
