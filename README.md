@@ -1,18 +1,16 @@
 # Next.js Boilerplate Overview
 
-This boilerplate is set up with powerful modern tools to help you start building full-stack web applications quickly and securely:
+This boilerplate is set up with modern tools to help you start building full-stack web applications quickly and securely:
 
 ## 🔒 Clerk Authentication
 
 [Clerk](https://clerk.com/) provides complete authentication and user management out of the box. It handles sign up, sign in, user profile management, and more, allowing you to focus on building your core features.
 
-## 🗄️ Neon Postgres (Remote)
-
-[Neon](https://neon.tech/) is a fully managed, serverless Postgres database you can connect to remotely. It combines the power and familiarity of PostgreSQL with easy scaling and modern DX.
-
-## 🛠️ Prisma ORM
+## 🛠️ Prisma ORM + PostgreSQL
 
 [Prisma](https://www.prisma.io/) acts as your elegant database toolkit for TypeScript & Node.js. It provides type-safe database access, migration management, and an amazing development workflow.
+
+**PostgreSQL** runs in a Docker container to simplify local development. See the Docker section below.
 
 ## 🎨 shadcn/ui
 
@@ -20,38 +18,94 @@ This boilerplate is set up with powerful modern tools to help you start building
 
 ---
 
+## 🐳 Docker Setup & Prisma Configuration
+
+To run the database locally, Docker is required. You can use the provided `docker-compose.yml` file to start PostgreSQL and Adminer (a web-based database client).
+
+### Steps:
+
+1. Make sure Docker is installed on your machine: [Docker installation guide](https://docs.docker.com/get-docker/).
+2. From the project root, start the database:
+
+```bash
+docker-compose up -d
+```
+
+3. PostgreSQL will be available on `localhost:5432`. Adminer will be available on [http://localhost:8080](http://localhost:8080).
+
+4. Configure your `.env` file with your database credentials (see `DATABASE_URL` for Prisma).
+
+5. Run Prisma commands to set up your database:
+
+```bash
+# Generate Prisma client
+npx prisma generate
+
+# Create migrations based on your Prisma schema
+npx prisma migrate dev --name init
+
+# Optional: Check database connection and view Prisma Studio
+npx prisma studio
+```
+
+After running these commands, your database will be initialized, and Prisma will be ready for development.
+
+### Example `docker-compose.yml`:
+
+```yaml
+services:
+
+  db:
+    image: postgres:18
+    container_name: postgres
+    restart: always
+    shm_size: 128mb
+    env_file:
+      - ./.env
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata:
+```
+
+---
+
 ## Get Started
 
-Clone the repo, install dependencies, set up your `.env` file with your Clerk and Neon credentials, and you're ready to go!
+1. Clone the repo and install dependencies:
 
-If you need help or more info about each tool, check out their official documentation linked above.
+```bash
+git clone <repo-url>
+cd <repo>
+npm install
+```
 
----
+2. Set up your `.env` file with Clerk and database credentials.
+3. Start the database with Docker:
 
-# Visão Geral do Boilerplate Next.js (PT-BR)
+```bash
+docker-compose up -d
+```
 
-Este boilerplate está configurado com ferramentas modernas poderosas para ajudar você a começar a construir aplicações web full-stack de forma rápida e segura:
+4. Run Prisma commands to generate client and migrate the database:
 
-## 🔒 Autenticação Clerk
+```bash
+npx prisma generate
+npx prisma migrate dev --name init
+```
 
-[Clerk](https://clerk.com/) fornece autenticação completa e gerenciamento de usuários prontos para uso. Ele lida com cadastro, login, gerenciamento de perfil do usuário e muito mais, permitindo que você foque em construir suas principais funcionalidades.
+5. Start your development server:
 
-## 🗄️ Neon Postgres (Remoto)
-
-[Neon](https://neon.tech/) é um banco de dados Postgres totalmente gerenciado e serverless, que você pode conectar remotamente. Ele combina o poder e a familiaridade do PostgreSQL com fácil escalabilidade e uma experiência de desenvolvedor moderna.
-
-## 🛠️ Prisma ORM
-
-[Prisma](https://www.prisma.io/) atua como uma elegante ferramenta de banco de dados para TypeScript & Node.js. Ele oferece acesso ao banco de dados com segurança de tipos, gerenciamento de migrações e um fluxo de desenvolvimento incrível.
-
-## 🎨 shadcn/ui
-
-[shadcn/ui](https://ui.shadcn.com/) oferece componentes React lindamente projetados e totalmente personalizáveis, construídos sobre Radix UI e TailwindCSS — ajudando você a construir interfaces rapidamente.
-
----
-
-## Como Começar
-
-Clone o repositório, instale as dependências, configure o arquivo `.env.example` com as credenciais do Clerk e da Neon, e pronto!
-
-Se precisar de ajuda ou mais informações sobre cada ferramenta, confira a documentação oficial nos links acima.
+```bash
+npm run dev
+```
